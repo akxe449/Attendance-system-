@@ -61,3 +61,21 @@ GROUP BY cs.session_date ORDER BY cs.session_date;
 BEGIN;
 UPDATE class_session SET status = 'Closed' WHERE status = 'Open';
 ROLLBACK;
+-- 13. Attendance summary by course
+SELECT course_code,
+       COUNT(*) AS enrolled_students,
+       ROUND(AVG(attendance_pct), 2) AS average_attendance
+FROM v_attendance_summary
+GROUP BY course_code
+ORDER BY average_attendance DESC;
+
+-- 14. Students with 100% attendance
+SELECT roll_no, full_name, course_code, attendance_pct
+FROM v_attendance_summary
+WHERE attendance_pct = 100
+ORDER BY course_code, roll_no;
+
+-- 15. Students below 75% attendance
+SELECT roll_no, full_name, course_code, attendance_pct
+FROM v_defaulters
+ORDER BY attendance_pct ASC;

@@ -71,9 +71,15 @@ class LivenessChallenge:
             "turn_right": "Turn your head RIGHT",
         }[self.kind]
 
+
+
     @property
     def expired(self):
-        return (not self.passed) and (time.time() - self.started > self.timeout)
+        return (
+                not self.passed
+                and time.time() - self.started >= self.timeout
+        )
+
 
     @property
     def time_left(self):
