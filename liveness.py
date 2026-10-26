@@ -21,7 +21,7 @@ YAW_LEFT = 0.38             # nose position ratio thresholds for head turns
 YAW_RIGHT = 0.62
 YAW_CENTER = (0.42, 0.58)   # must be seen before a turn is accepted
 TEXTURE_MIN = 20.0          # Laplacian variance on 128x128 face crop (tune per camera)
-CHALLENGE_TIMEOUT = 8.0     # seconds
+CHALLENGE_TIMEOUT = 12.0     # seconds
 REQUIRED_BLINKS = 2
 
 
