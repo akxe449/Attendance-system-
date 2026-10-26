@@ -9,3 +9,10 @@ attendance.db
 
 # IDE
 .idea/
+# Face data and attack-test recordings
+photos/
+*.mp4
+*.mov
+
+# Python test/cache artifacts
+.pytest_cache/
