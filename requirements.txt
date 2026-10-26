@@ -1,0 +1,4 @@
+numpy
+opencv-python
+face_recognition      # needs dlib: on Windows use `pip install dlib-bin` first (no C++ compiler required)
+setuptools<81         # face_recognition_models still imports pkg_resources
