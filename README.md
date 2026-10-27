@@ -80,10 +80,7 @@ attendance), `UNIQUE(course_id, session_date, start_time)`, `CHECK` on status / 
 *Blink detection:* Eye Aspect Ratio `EAR = (‖p2−p6‖ + ‖p3−p5‖) / (2‖p1−p4‖)`; EAR < 0.21 for ≥ 2 frames then open = one blink.
 *Head turn:* `(nose_tip.x − jaw_left.x) / (jaw_right.x − jaw_left.x)` - 0.5 is straight; a turn is accepted only after a centred frame was seen.
 
-**Honest limitations (say these in your viva - it shows maturity):** this defends against 2D attacks (photos, screens, replay).
-A determined attacker with a 3D mask or a real-time deepfake could still beat it; industrial systems add depth/IR cameras or
-trained PAD models (e.g. Silent-Face-Anti-Spoofing). The texture threshold (`TEXTURE_MIN` in `liveness.py`) depends on your
-camera, so tune it or use `--no-texture`. Good lighting matters for recognition accuracy.
+
 
 
 
