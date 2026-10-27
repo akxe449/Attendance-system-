@@ -91,9 +91,3 @@ camera, so tune it or use `--no-texture`. Good lighting matters for recognition 
 9. Attack test table (photo, phone screen, video, real person → result)  10. Limitations & future work
 (MySQL/PostgreSQL port, web dashboard, multi-camera, PAD model).
 
-## 7. Likely viva questions
-- *Why store the encoding as BLOB, not the image?* Smaller, no raw photo stored (privacy), and matching needs only the vector.
-- *Why a separate `face_encoding` table?* 1NF - one student has many samples; improves accuracy.
-- *How do you stop proxy attendance?* Recognition + random liveness + identity lock + audit log + DB constraints.
-- *Why triggers?* Rules hold even if another application writes to the DB.
-- *Why SQLite?* Zero setup for a demo; schema is standard SQL and ports to MySQL by changing `AUTOINCREMENT`/date functions.
