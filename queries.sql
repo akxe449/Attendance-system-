@@ -1,4 +1,3 @@
--- Demo queries for viva / report.  Run:  sqlite3 attendance.db < queries.sql
 .headers on
 .mode column
 
