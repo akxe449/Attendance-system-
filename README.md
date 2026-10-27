@@ -51,7 +51,7 @@ erDiagram
 ```
 Paste into https://mermaid.live to export an image for your report.
 
-## 4. Database design points (for the viva)
+## 4. Database design points 
 **Normalisation (3NF).** Department name lives only in `department`; course/faculty details only in `course`/`faculty`;
 the student–course M:N relationship is resolved by `enrollment` with a composite PK. Face samples are a separate 1:N table
 instead of repeating-group columns (1NF). No non-key attribute depends on another non-key attribute (3NF).
@@ -59,7 +59,7 @@ instead of repeating-group columns (1NF). No non-key attribute depends on anothe
 **Integrity constraints.** PK/FK with `ON DELETE CASCADE/RESTRICT/SET NULL`, `UNIQUE(session_id, student_id)` (no duplicate
 attendance), `UNIQUE(course_id, session_date, start_time)`, `CHECK` on status / semester / reason / encoding length (1024 bytes = 128 × float64).
 
-**Triggers (rules inside the DB, not only in Python).**
+**Triggers**
 - `trg_attendance_enrolled` - rejects attendance for a student not enrolled in the course
 - `trg_attendance_session_open` - rejects attendance unless the session is `Open`
 - `trg_attendance_late` - marks `Late` automatically if more than 10 minutes after start
