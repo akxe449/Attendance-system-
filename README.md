@@ -85,9 +85,5 @@ A determined attacker with a 3D mask or a real-time deepfake could still beat it
 trained PAD models (e.g. Silent-Face-Anti-Spoofing). The texture threshold (`TEXTURE_MIN` in `liveness.py`) depends on your
 camera, so tune it or use `--no-texture`. Good lighting matters for recognition accuracy.
 
-## 6. Suggested report outline
-1. Problem statement & motivation  2. Requirements  3. System architecture  4. ER diagram & schema  5. Normalisation
-6. Triggers / views / queries with output screenshots  7. Face recognition + liveness algorithm  8. Testing (run `unittest`)
-9. Attack test table (photo, phone screen, video, real person → result)  10. Limitations & future work
-(MySQL/PostgreSQL port, web dashboard, multi-camera, PAD model).
+
 
