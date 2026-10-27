@@ -1,4 +1,7 @@
 numpy
 opencv-python
-face_recognition      
-setuptools<81        
+face_recognition
+setuptools&lt;81
+streamlit
+pandas
+altair
