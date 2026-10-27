@@ -1,9 +1,4 @@
-"""
-Enrol a student: stores profile + several face encodings in the database.
 
-Webcam :  python register_student.py --roll 21CS001 --name "Aarav Sharma" --dept "Computer Science" --semester 5 --courses CS301,CS302
-Photos :  python register_student.py --roll 21CS001 --name "Aarav Sharma" --dept "Computer Science" --semester 5 --images ./photos/aarav
-"""
 import argparse
 import sys
 from pathlib import Path
