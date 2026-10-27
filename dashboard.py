@@ -71,8 +71,8 @@ st.sidebar.title("🎓 Attendance")
 st.sidebar.caption("Face Recognition + Anti-Spoofing  \nDBMS mini project")
 page = st.sidebar.radio(
     "Go to",
-    ["🏠 Overview", "📊 Attendance", "👩‍🎓 Students", "🗓️ Sessions",
-     "🛡️ Security", "⚠️ Defaulters & Export", "🗄️ Database"],
+    [" Overview", " Attendance", " Students", " Sessions",
+     " Security", " Defaulters & Export", " Database"],
 )
 st.sidebar.markdown("---")
 threshold = st.sidebar.slider("Minimum attendance % (defaulter limit)", 50, 100, 75, step=5)
@@ -84,7 +84,7 @@ st.sidebar.markdown('<p class="note">Data is read live from attendance.db each t
 k = dd.kpis(threshold)
 
 # ================================================================ OVERVIEW
-if page == "🏠 Overview":
+if page == " Overview":
     st.title("Attendance Overview")
     st.caption("A quick look at how the class is doing.")
 
@@ -159,7 +159,7 @@ if page == "🏠 Overview":
         st.altair_chart(chart, use_container_width=True)
 
 # ================================================================ ATTENDANCE
-elif page == "📊 Attendance":
+elif page == " Attendance":
     st.title("Attendance Analysis")
     codes = dd.courses()
     cc = st.columns(2)
@@ -235,7 +235,7 @@ elif page == "📊 Attendance":
             tooltip=["roll_no", "full_name", "late_count"]).properties(height=320), use_container_width=True)
 
 # ================================================================ STUDENTS
-elif page == "👩‍🎓 Students":
+elif page == " Students":
     st.title("Students")
     sl = dd.student_list()
     tab1, tab2 = st.tabs(["All students", "Student profile"])
@@ -279,7 +279,7 @@ elif page == "👩‍🎓 Students":
         st.dataframe(dd.student_history(roll), use_container_width=True, hide_index=True)
 
 # ================================================================ SESSIONS
-elif page == "🗓️ Sessions":
+elif page == " Sessions":
     st.title("Sessions")
     ss = dd.sessions()
     st.caption("Source: view `v_session_report`")
@@ -308,7 +308,7 @@ elif page == "🗓️ Sessions":
             st.dataframe(dd.session_absent(sid), use_container_width=True, hide_index=True)
 
 # ================================================================ SECURITY
-elif page == "🛡️ Security":
+elif page == " Security":
     st.title("Anti-Spoofing & Security")
     st.caption("Every failed liveness check is saved in the `spoof_attempt` table.")
     c = st.columns(3)
@@ -322,7 +322,7 @@ elif page == "🛡️ Security":
         st.subheader("Attempts by reason")
         r = dd.spoof_by_reason()
         if r.empty:
-            st.write("No attempts logged. 🎉")
+            st.write("No attempts logged. ")
         else:
             st.altair_chart(alt.Chart(r).mark_bar(color=RED).encode(
                 x=alt.X("reason:N", title=None, sort="-y", axis=alt.Axis(labelAngle=-15)),
@@ -357,12 +357,12 @@ elif page == "🛡️ Security":
     st.dataframe(dd.spoof_log(), use_container_width=True, hide_index=True)
 
 # ================================================================ DEFAULTERS
-elif page == "⚠️ Defaulters & Export":
+elif page == " Defaulters & Export":
     st.title("Defaulters & Export")
     st.caption(f"Students under {threshold}% in at least one course. Change the limit in the sidebar.")
     d = dd.defaulters(threshold)
     if d.empty:
-        st.success("Nobody is below the limit 🎉")
+        st.success("Nobody is below the limit ")
     else:
         c = st.columns(3)
         c[0].metric("Rows below limit", len(d))
@@ -381,9 +381,9 @@ elif page == "⚠️ Defaulters & Export":
     st.subheader("Download")
     full = dd.summary()
     a, b = st.columns(2)
-    a.download_button("⬇️ Full attendance summary (CSV)", full.to_csv(index=False).encode(),
+    a.download_button(" Full attendance summary (CSV)", full.to_csv(index=False).encode(),
                       "attendance_summary.csv", "text/csv")
-    b.download_button("⬇️ Defaulters (CSV)", d.to_csv(index=False).encode(),
+    b.download_button(" Defaulters (CSV)", d.to_csv(index=False).encode(),
                       "defaulters.csv", "text/csv")
 
 # ================================================================ DATABASE
