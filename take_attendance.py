@@ -1,13 +1,4 @@
-"""
-Live attendance with face recognition + anti-spoofing.
 
-    python take_attendance.py --course CS301        # opens (or creates) today's session
-    python take_attendance.py --session 12          # use an existing session id
-
-Flow per person:  recognise -> random liveness challenge -> identity re-check ->
-texture check -> INSERT into attendance.   Failures go to the spoof_attempt table.
-Press Q to close the session.
-"""
 import argparse
 import sys
 import time
@@ -19,11 +10,10 @@ import numpy as np
 import db
 from liveness import LivenessChallenge, TEXTURE_MIN, texture_score
 
-MATCH_TOLERANCE = 0.50   # face_recognition default is 0.6; 0.5 is stricter
-SCALE = 0.5              # detect on a half-size frame for speed
-RECHECK_EVERY = 5        # re-verify identity every N frames during a challenge
-COOLDOWN = 3.0           # seconds to show the result banner
-
+MATCH_TOLERANCE = 0.50   
+SCALE = 0.5              
+RECHECK_EVERY = 5        
+COOLDOWN = 3.0           
 GREEN, RED, YELLOW, WHITE = (0, 200, 0), (0, 0, 255), (0, 215, 255), (255, 255, 255)
 
 
@@ -73,7 +63,7 @@ def main():
             ok, frame = cap.read()
             if not ok:
                 break
-            frame = cv2.flip(frame, 1)          # mirror so left/right feel natural
+            frame = cv2.flip(frame, 1)          
             frame_no += 1
             small = cv2.resize(frame, (0, 0), fx=SCALE, fy=SCALE)
             rgb = cv2.cvtColor(small, cv2.COLOR_BGR2RGB)
@@ -81,7 +71,7 @@ def main():
             now = time.time()
 
             if locs:
-                loc = max(locs, key=lambda l: (l[2] - l[0]) * (l[1] - l[3]))   # largest face
+                loc = max(locs, key=lambda l: (l[2] - l[0]) * (l[1] - l[3]))   
                 t, r, b, l = [int(v / SCALE) for v in loc]
                 box_color = WHITE
 
