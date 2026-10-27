@@ -1,7 +1,4 @@
-"""Fill the database with demo data (no faces - register those with register_student.py).
 
-    python seed.py          # keeps existing data out: resets the DB first
-"""
 import random
 from datetime import date, timedelta
 
