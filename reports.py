@@ -1,13 +1,4 @@
-"""
-Reports straight from the database.
 
-  python reports.py summary [--course CS301]
-  python reports.py defaulters [--threshold 75]
-  python reports.py session 3
-  python reports.py sessions
-  python reports.py spoofs
-  python reports.py export attendance.csv
-"""
 import argparse
 import csv
 
