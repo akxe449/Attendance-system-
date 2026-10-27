@@ -1,7 +1,4 @@
--- ============================================================
---  Attendance using Face Recognition & Anti-Spoofing
---  Database schema (SQLite) - normalized to 3NF
--- ============================================================
+
 PRAGMA foreign_keys = ON;
 
 -- ---------- Master tables ----------
