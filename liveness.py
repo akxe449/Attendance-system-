@@ -1,14 +1,4 @@
-"""
-Anti-spoofing (liveness detection).
-
-Layered defence against photo / phone-screen / video-replay attacks:
-
- 1. Random active challenge  - blink twice, OR turn head left, OR turn head right.
-    The challenge is picked at random AFTER the face is recognised, so an attacker
-    cannot pre-record a matching video.
- 2. Identity lock            - the recognised identity must stay the same for the
-    whole challenge (stops "show photo, then swap in a real person").
- 3. Texture check            - blur / flatness score of the face crop (supplementary).
+exture check            - blur / flatness score of the face crop (supplementary).
 """
 import random
 import time
